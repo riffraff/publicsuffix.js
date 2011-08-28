@@ -20,6 +20,9 @@ test('127.0.0.1', ['', '127.0.0.1']);
 // Cases, you need to lowerCase() the domain yourself
 test('XxX.CaseTest.coM', ['XxX.', 'CaseTest.coM']);
 
+// bug
+test('google.it', ['', 'google.it']);
+
 
 testURL('http://127.0.0.1:8080/test.hmtl', ['http://', '127.0.0.1', ':8080/test.hmtl']);
 testURL('http://oree.ch/freepass', ['http://', 'oree.ch', '/freepass']);
