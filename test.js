@@ -4,7 +4,6 @@ var ps = require('publicsuffix'),
   sys = require('sys'),
   tests = [];
 
-
 // Reject
 test('www.foo.educ.ar', ['www.foo.', 'educ.ar']);
 // Accept
@@ -19,9 +18,9 @@ test('www.教育.hk', ['', 'www.教育.hk']);
 test('127.0.0.1', ['', '127.0.0.1']);
 // Cases, you need to lowerCase() the domain yourself
 test('XxX.CaseTest.coM', ['XxX.', 'CaseTest.coM']);
-
-// bug
+// accept-able domain 'le.it" matches existing domain 
 test('google.it', ['', 'google.it']);
+test('www.google.it', ['www.', 'google.it']);
 
 
 testURL('http://127.0.0.1:8080/test.hmtl', ['http://', '127.0.0.1', ':8080/test.hmtl']);
@@ -31,7 +30,6 @@ testURL('http://www.oree.ch/freepass', ['http://www.', 'oree.ch', '/freepass']);
 testURL('http://user:pass@example.org', ['http://user:pass@', 'example.org', '']);
 testURL('google.com', ['', 'google.com', '']);
 testURL('mailto:foo@example.com', ['mailto:foo@', 'example.com', '']);
-
 for (var i=0, l=tests.length; i<l; i++) {
   sys.puts("Running test " + i + "/" + l);
   tests[i]();
