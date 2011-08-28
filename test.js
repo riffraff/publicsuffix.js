@@ -10,6 +10,8 @@ test('www.foo.educ.ar', ['www.foo.', 'educ.ar']);
 test('www.foo.com.ac', ['www.', 'foo.com.ac']);
 // Accept without sub-domain
 test('google.co.uk', ['', 'google.co.uk']);
+// domain is same when using sub
+test('www.google.co.uk', ['www.', 'google.co.uk']);
 // Accept without public-suffix
 test('co.uk', ['', 'co.uk']);
 // UTF-8 accept
@@ -21,6 +23,16 @@ test('XxX.CaseTest.coM', ['XxX.', 'CaseTest.coM']);
 // accept-able domain 'le.it" matches existing domain 
 test('google.it', ['', 'google.it']);
 test('www.google.it', ['www.', 'google.it']);
+
+// testcases from other libs
+
+test('parliament.uk', ['', 'parliament.uk']);
+test('foo.parliament.uk', ['foo.', 'parliament.uk']);
+
+test('www.site.metro.tokyo.jp', ['www.site.', 'metro.tokyo.jp'])
+//XXX FIXME invalid domain invalidates precondition, anything can happen
+//test('nic.ke', ['', 'nic.ke']) passes
+//test('nic.asd', ['', 'nic.asd']) fails
 
 
 testURL('http://127.0.0.1:8080/test.hmtl', ['http://', '127.0.0.1', ':8080/test.hmtl']);
